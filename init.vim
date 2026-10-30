@@ -7,10 +7,12 @@ Plug 'savq/melange-nvim'
 Plug 'folke/snacks.nvim'
 Plug 'MeanderingProgrammer/render-markdown.nvim'
 Plug 'windwp/nvim-autopairs'
+Plug 'lewis6991/gitsigns.nvim'
 call plug#end()
 
-set scrolloff=1 sidescrolloff=2
+set scrolloff=3 sidescrolloff=2
 set number relativenumber
+set tabstop=3 shiftwidth=3 softtabstop=3
 
 let g:markdown_folding = 1
 set foldlevelstart=99
