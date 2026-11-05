@@ -10,6 +10,7 @@ Plug 'windwp/nvim-autopairs'
 Plug 'lewis6991/gitsigns.nvim'
 call plug#end()
 
+set smoothscroll
 set scrolloff=3 sidescrolloff=2
 set number relativenumber
 set tabstop=3 shiftwidth=3 softtabstop=3
