@@ -8,4 +8,5 @@ require('which-key').add({
 	{ '<leader>u', group = 'ui toggles' },
 	{ '<leader>c', group = 'code' },
 	{ '<leader>h', group = 'git hunks' },
+	{ '<leader>t', group = 'time machine' },
 })
