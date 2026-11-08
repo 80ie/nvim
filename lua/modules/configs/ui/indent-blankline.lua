@@ -551,7 +551,7 @@ return function()
 			},
 			filetypes = {
 				"", -- for all buffers without a file type
-				"alpha",
+				"snacks_dashboard",
 				"checkhealth",
 				"dap-repl",
 				"diff",

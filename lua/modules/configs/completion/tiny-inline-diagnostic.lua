@@ -25,7 +25,7 @@ return function()
 			}),
 		},
 		disabled_ft = {
-			"alpha",
+			"snacks_dashboard",
 			"checkhealth",
 			"dap-repl",
 			"diff",

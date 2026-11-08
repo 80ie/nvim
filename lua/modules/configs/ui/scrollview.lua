@@ -10,7 +10,7 @@ return function()
 		diagnostics_info_symbol = icons.diagnostics.Information,
 		diagnostics_hint_symbol = icons.diagnostics.Hint,
 		excluded_filetypes = {
-			"alpha",
+			"snacks_dashboard",
 			"fugitive",
 			"git",
 			"notify",

@@ -40,11 +40,20 @@ misc["lervag/vimtex"] = {
 		vim.g.vimtex_view_general_options = "--unique file:@pdf\\#src:@line@tex"
 	end,
 }
--- Only the image module is used (renders math in markdown/latex)
+-- Only image (math in markdown/latex) and the dashboard are used
 misc["folke/snacks.nvim"] = {
 	lazy = false,
 	priority = 900,
-	opts = { image = { enabled = true } },
+	opts = {
+		image = { enabled = true },
+		dashboard = {
+			enabled = true,
+			sections = {
+				{ section = "header" },
+				{ section = "keys", gap = 1, padding = 1 },
+			},
+		},
+	},
 }
 
 return misc

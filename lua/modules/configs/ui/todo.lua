@@ -31,7 +31,7 @@ return function()
 			comments_only = true,
 			max_line_len = 500,
 			exclude = {
-				"alpha",
+				"snacks_dashboard",
 				"checkhealth",
 				"dap-repl",
 				"diff",
