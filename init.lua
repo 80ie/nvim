@@ -16,6 +16,7 @@ Plug('nvim-telescope/telescope.nvim')
 Plug('doctorfree/cheatsheet.nvim')
 Plug('TheLazyCat00/runner-nvim')
 Plug('nvim-tree/nvim-web-devicons')
+Plug('nvim-tree/nvim-tree.lua')
 Plug('akinsho/bufferline.nvim', { tag = '*' })
 vim.call('plug#end')
 
@@ -86,13 +87,15 @@ map('n', '<leader>fC', '<Cmd>CheatsheetEdit<CR>', { desc = 'Edit cheatsheet' })
 
 -- snacks {{{2
 map('n', '<leader>gg', function() Snacks.lazygit() end, { desc = 'LazyGit' })
-map('n', '<leader>e', function() Snacks.explorer() end, { desc = 'Explorer' })
-map('n', '<leader>E', function() Snacks.explorer({ cwd = vim.fn.expand('%:p:h') }) end, { desc = 'Explorer (file dir)' })
 map('n', '<leader><space>', function() Snacks.picker.smart() end, { desc = 'Smart find' })
 map('n', '<leader>ff', function() Snacks.picker.files() end, { desc = 'Files' })
 map('n', '<leader>fg', function() Snacks.picker.grep() end, { desc = 'Grep' })
 map('n', '<leader>fb', function() Snacks.picker.buffers() end, { desc = 'Buffers' })
 map('n', '<leader>fn', function() Snacks.notifier.show_history() end, { desc = 'Notification history' })
+
+-- nvim-tree {{{2
+map('n', '<leader>e', '<Cmd>NvimTreeToggle<CR>', { desc = 'Explorer' })
+map('n', '<leader>E', '<Cmd>NvimTreeFindFile<CR>', { desc = 'Explorer (reveal file)' })
 
 -- substitute {{{2
 map('n', 's', function() require('substitute').operator() end, { desc = 'Substitute with motion' })

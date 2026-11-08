@@ -8,7 +8,6 @@ require('snacks').setup({
 			{ section = 'keys', gap = 1, padding = 1 },
 		},
 	},
-	explorer = { enabled = true },
 	indent = { enabled = true },
 	lazygit = { enabled = true },
 	quickfile = { enabled = true },
