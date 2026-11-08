@@ -9,4 +9,5 @@ require('which-key').add({
 	{ '<leader>c', group = 'code' },
 	{ '<leader>h', group = 'git hunks' },
 	{ '<leader>t', group = 'time machine' },
+	{ '<leader>b', group = 'buffers' },
 })
