@@ -1,6 +1,9 @@
 local misc = {}
 
+misc["morhetz/gruvbox"] = { lazy = false, priority = 1000 }
 misc["savq/melange-nvim"] = { lazy = false, priority = 1000 }
+misc["ramojus/mellifluous.nvim"] = { lazy = false, priority = 1000, neutral = false }
+misc["ptdewey/darkearth-nvim"] = { lazy = false, priority = 1000 }
 misc["zaldih/themery.nvim"] = {
 	lazy = false,
 	cmd = "Themery",
@@ -16,12 +19,6 @@ misc["y3owk1n/time-machine.nvim"] = {
 	lazy = false,
 	config = function()
 		require("time-machine").setup({})
-	end,
-}
-misc["TheLazyCat00/runner-nvim"] = {
-	lazy = true,
-	config = function()
-		require("runner-nvim").setup({})
 	end,
 }
 misc["doctorfree/cheatsheet.nvim"] = {

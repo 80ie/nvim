@@ -56,7 +56,6 @@ local mappings = {
 			:with_noremap()
 			:with_silent()
 			:with_desc("edit: Clear search highlight"),
-		["n|<leader>o"] = map_cr("setlocal spell! spelllang=en_us"):with_desc("edit: Toggle spell check"),
 	},
 	plugins = {
 		-- Plugin: persisted.nvim

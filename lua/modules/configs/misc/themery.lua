@@ -16,5 +16,10 @@ return function()
 		end
 		return a < b
 	end)
-	require("themery").setup({ themes = themes, livePreview = true })
+	-- lightearth sets background=light and it sticks; reset so dual-mode themes (mellifluous) stay dark
+	require("themery").setup({
+		themes = themes,
+		livePreview = true,
+		globalBefore = ('vim.o.background = "%s"'):format(require("core.settings").background),
+	})
 end

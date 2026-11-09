@@ -27,7 +27,6 @@ local mappings = {
 
 		-- Plugin: sniprun
 		["v|<leader>r"] = map_cr("SnipRun"):with_noremap():with_silent():with_desc("tool: Run code by range"),
-		["n|<leader>r"] = map_cu([[%SnipRun]]):with_noremap():with_silent():with_desc("tool: Run code by file"),
 
 		-- Plugin: toggleterm
 		["t|<Esc><Esc>"] = map_cmd([[<C-\><C-n>]]):with_noremap():with_silent(), -- switch to normal mode in terminal.
@@ -79,6 +78,9 @@ local mappings = {
 			:with_noremap()
 			:with_silent()
 			:with_desc("git: Toggle lazygit"),
+
+		-- Plugin: nvim-docs-view
+		["n|<leader>lk"] = map_cr("DocsViewToggle"):with_noremap():with_silent():with_desc("lsp: Toggle docs pane"),
 
 		-- Plugin: trouble
 		["n|gt"] = map_cr("Trouble diagnostics toggle")

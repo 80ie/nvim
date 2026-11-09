@@ -5,7 +5,7 @@ lang["kevinhwang91/nvim-bqf"] = {
 	ft = "qf",
 	config = require("lang.bqf"),
 	dependencies = {
-		{ "junegunn/fzf", build = ":call fzf#install()" },
+		{ "junegunn/fzf" },
 	},
 }
 lang["ray-x/go.nvim"] = {

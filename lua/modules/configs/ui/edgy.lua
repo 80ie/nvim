@@ -51,6 +51,9 @@ return function()
 				filter = trouble_filter("right"),
 			},
 		},
+		right = {
+			{ ft = "nvim-docs-view", title = "Docs", size = { width = 60 } },
+		},
 		bottom = {
 			{ ft = "qf", size = { height = 0.3 } },
 			{

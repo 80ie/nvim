@@ -46,9 +46,6 @@ local mappings = {
 	["n|<leader>tX"] = map_cr("TimeMachinePurgeAll"):with_silent():with_desc("undo: Purge history (all)"),
 	["n|<leader>tl"] = map_cr("TimeMachineLogShow"):with_silent():with_desc("undo: Show log"),
 
-	-- runner
-	["n|<leader>T"] = map_callback(function() require("runner-nvim").toggle() end):with_noremap():with_desc("run: Toggle terminal"),
-
 	-- theme
 	["n|<leader>ut"] = map_cr("Themery"):with_silent():with_desc("ui: Pick theme"),
 }

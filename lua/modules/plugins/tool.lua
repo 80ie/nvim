@@ -61,6 +61,11 @@ tool["folke/trouble.nvim"] = {
 	cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
 	config = require("tool.trouble"),
 }
+tool["amrbashir/nvim-docs-view"] = {
+	lazy = true,
+	cmd = { "DocsViewToggle", "DocsViewUpdate" },
+	config = require("tool.docs-view"),
+}
 tool["folke/which-key.nvim"] = {
 	lazy = true,
 	event = { "CursorHold", "CursorHoldI" },
