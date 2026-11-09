@@ -15,7 +15,6 @@ TIERS = {  # tier -> function(stitch bool grid) -> dot bool grid
     "half": lambda s: block_down(s),
     "1x": lambda s: s,
     "2x": lambda s: np.kron(s, np.ones((2, 2), bool)),
-    "3x": lambda s: spread(s, [[1, 1, 0], [1, 1, 0], [0, 0, 0]]),
 }
 
 
@@ -24,16 +23,6 @@ def block_down(s):
     p = np.zeros((h + h % 2, w + w % 2), bool)
     p[:h, :w] = s
     return p.reshape(p.shape[0] // 2, 2, p.shape[1] // 2, 2).sum(axis=(1, 3)) >= 2
-
-
-def spread(s, pat):
-    k = len(pat)
-    out = np.zeros((s.shape[0] * k, s.shape[1] * k), bool)
-    for dy in range(k):
-        for dx in range(k):
-            if pat[dy][dx]:
-                out[dy::k, dx::k] = s
-    return out
 
 
 def slug(path):
