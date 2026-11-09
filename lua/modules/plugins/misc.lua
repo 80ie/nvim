@@ -49,7 +49,7 @@ misc["folke/snacks.nvim"] = {
 		dashboard = {
 			enabled = true,
 			sections = {
-				{ section = "header" },
+				require("misc.splash"),
 				{ section = "keys", gap = 1, padding = 1 },
 			},
 		},
