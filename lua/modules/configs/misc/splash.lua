@@ -1,30 +1,41 @@
--- Random art from the largest splash/art/<cols>x<rows> that fits the window (see splash/generate.sh)
-local chrome_rows = 18 -- keys list, paddings and the statusline below the art
+-- Art from splash/art/<name>.<tier>.txt (splash/generate.py). The picture is chosen once per
+-- session; its tier is the largest that fits the window, so re-renders on resize keep the picture.
+local chrome_rows = 18 -- keys list and paddings below the art
+local picked
+
+local function read(file)
+	local lines = vim.fn.readfile(file)
+	local cols = 0
+	for _, l in ipairs(lines) do
+		cols = math.max(cols, vim.fn.strdisplaywidth(l))
+	end
+	return { lines = lines, rows = #lines, cols = cols }
+end
 
 return function(self)
 	local root = vim.fn.stdpath("config") .. "/splash/art"
+	if not picked then
+		local names = {}
+		for _, f in ipairs(vim.fn.glob(root .. "/*.1x.txt", false, true)) do
+			names[#names + 1] = (vim.fn.fnamemodify(f, ":t"):gsub("%.1x%.txt$", ""))
+		end
+		if #names == 0 then
+			return { header = "", padding = 0 }
+		end
+		math.randomseed(vim.uv.hrtime())
+		picked = names[math.random(#names)]
+	end
 	local win = self:size()
-	local sizes = {}
-	for _, d in ipairs(vim.fn.glob(root .. "/*x*", false, true)) do
-		local cols, rows = vim.fn.fnamemodify(d, ":t"):match("^(%d+)x(%d+)$")
-		if cols then
-			sizes[#sizes + 1] = { dir = d, cols = tonumber(cols), rows = tonumber(rows) }
+	local best, smallest
+	for _, f in ipairs(vim.fn.glob(root .. "/" .. picked .. ".*.txt", false, true)) do
+		local art = read(f)
+		if not smallest or art.rows < smallest.rows then
+			smallest = art
+		end
+		if art.rows + chrome_rows <= win.height and art.cols + 2 <= win.width and (not best or art.rows > best.rows) then
+			best = art
 		end
 	end
-	table.sort(sizes, function(a, b)
-		return a.rows < b.rows
-	end)
-	local pick = sizes[1]
-	for _, s in ipairs(sizes) do
-		if s.rows + chrome_rows <= win.height and s.cols + 2 <= win.width then
-			pick = s
-		end
-	end
-	if not pick then
-		return { header = "", padding = 0 }
-	end
-	local files = vim.fn.glob(pick.dir .. "/*.txt", false, true)
-	math.randomseed(vim.uv.hrtime())
-	local lines = vim.fn.readfile(files[math.random(#files)])
-	return { header = table.concat(lines, "\n"), padding = 2 }
+	local art = best or smallest
+	return { header = table.concat(art.lines, "\n"), padding = 2 }
 end
