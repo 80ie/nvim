@@ -42,6 +42,7 @@ require("keymap.editor")
 require("keymap.lang")
 require("keymap.tool")
 require("keymap.ui")
+require("keymap.toggle")
 require("keymap.personal")
 
 -- User keymaps

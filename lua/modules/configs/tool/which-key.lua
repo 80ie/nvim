@@ -67,6 +67,8 @@ return function()
 			{ "<leader>n", group = icons.ui.FolderOpen .. " Nvim Tree" },
 			{ "<leader>c", group = icons.misc.LspAvailable .. " Code" },
 			{ "<leader>t", group = icons.ui.History .. " Undo" },
+			{ "<leader>u", group = icons.ui.Gear .. " UI" },
+			require("keymap.toggle").spec,
 		},
 	})
 end

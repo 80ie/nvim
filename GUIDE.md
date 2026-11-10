@@ -19,7 +19,7 @@ The `integrate` branch moves the config onto the nvimdots module layout (lazy.nv
 | `<C-h/j/k/l>` | Plain `<C-w>` moves | smart-splits (same keys, plus `<A-h/j/k/l>` to resize). |
 | `<leader>ff`, `<leader>fg`, `<leader>fb`, `<leader><space>` | Snacks pickers | Telescope "collections" (section 2). `<leader><space>` and `<leader>fn` are gone. |
 | `<leader>gg` | `Snacks.lazygit()` | lazygit in a toggleterm float. |
-| `<leader>u*` toggles (wrap, spell, diagnostics…) | Snacks toggles | Removed. `<leader>ut` now opens the theme picker. |
+| `<leader>u*` toggles (wrap, spell, diagnostics…) | Snacks toggles | `lua/keymap/toggle.lua`: same idea, no Snacks. which-key shows an on/off icon and Enable/Disable label per toggle. `<leader>ut` is the theme picker. |
 | runner-nvim (`<leader>r`, `<leader>o`, `<leader>T`) | Run a command, repeat the last one | Removed. Use toggleterm (`:TermExec cmd="..."`) or `<leader>m` in C files. `<leader>r` in visual mode runs the selection with SnipRun. |
 
 Kept as is: `Q` records macros (`q` is disabled), `<C-BS>` deletes a word, `<leader>=` reindents, `s`/`ss`/`S`/`sx`/`X` (substitute.nvim), `<leader>t*` (time-machine), `<F1>` toggles render-markdown.
@@ -194,6 +194,7 @@ Lookahead is on, so `daf` works with the cursor before the function.
 - **rainbow-delimiters**: colored brackets. **nvim-treesitter-context**: pins up to 3 lines of enclosing scope at the top of the window. **mini.cursorword**: underlines other uses of the word under the cursor. **nvim-highlight-colors**: paints hex, rgb, hsl, and CSS variables with their color.
 - **paint.nvim**: extra highlights, currently Lua `---@tag` annotations and Python `name:` keys.
 - **nvim-notify**: popup notifications at INFO and above, 2 s timeout. Browse history from `<leader>fm` → Notify.
+- **UI toggles** (`<leader>u`): `w` wrap, `s` spell, `l` numbers, `L` relative numbers, `i` invisible chars, `c` conceal, `d` diagnostics, `h` inlay hints, `b` dark background, `f` format on save, `v` virtual lines, `C` treesitter context, `H` color preview.
 - **Themery**: `<leader>ut` opens a theme picker with live preview. It lists every installed colorscheme: melange (default), gruvbox, mellifluous, darkearth. The choice persists across restarts.
 - **Splash**: opening `nvim` with no file shows a random picture rendered as braille dots, sized to the window. Pictures live in `splash/img`; regenerate art with `splash/generate.py`.
 
@@ -265,5 +266,5 @@ The dap-ui panels open automatically when a session starts. `K` is rebound to ev
 ## Known gaps to decide on
 
 - No rename keybinding (master's `<leader>rn`). Neovim's `grn` works.
-- Snacks pickers, notifier, scroll, and toggles from master are gone, as are their keys (`<leader><space>`, `<leader>fn`, `<leader>u*`).
+- Snacks pickers, notifier, and scroll from master are gone, as are their keys (`<leader><space>`, `<leader>fn`).
 - `zoxide` is missing, so the Zoxide tab in `<leader>fd` errors.
