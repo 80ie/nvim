@@ -21,18 +21,10 @@ misc["y3owk1n/time-machine.nvim"] = {
 		require("time-machine").setup({})
 	end,
 }
-misc["doctorfree/cheatsheet.nvim"] = {
-	lazy = true,
-	cmd = { "Cheatsheet", "CheatsheetEdit" },
-	dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim" },
-	config = function()
-		require("cheatsheet").setup({ bundled_cheatsheets = { disabled = { "nerd-fonts" } } })
-	end,
-}
 misc["lervag/vimtex"] = {
 	lazy = false,
 	init = function()
-		vim.g.vimtex_view_method = "zathura"
+		vim.g.vimtex_view_method = "general"
 		vim.g.vimtex_view_general_viewer = "okular"
 		vim.g.vimtex_view_general_options = "--unique file:@pdf\\#src:@line@tex"
 	end,

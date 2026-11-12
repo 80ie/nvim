@@ -147,6 +147,7 @@ function autocmd.load_autocmds()
 		ft = {
 			{ "FileType", "*", "setlocal formatoptions-=cro" },
 			{ "FileType", "markdown", "setlocal wrap" },
+			{ "FileType", "markdown", "lua vim.diagnostic.enable(false, { bufnr = 0 })" },
 			{ "FileType", "dap-repl", "lua require('dap.ext.autocompl').attach()" },
 			{
 				"FileType",

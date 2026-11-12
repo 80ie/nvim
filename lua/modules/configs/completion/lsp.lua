@@ -17,6 +17,12 @@ return function()
 		require("modules.utils").register_server("dartls", final_opts)
 	end
 
+	-- Provided by TeX Live, not Mason
+	if vim.fn.executable("digestif") == 1 then
+		local final_opts = vim.tbl_deep_extend("keep", require("completion.servers.digestif"), opts)
+		require("modules.utils").register_server("digestif", final_opts)
+	end
+
 	pcall(require, "user.configs.lsp")
 
 	-- Start LSPs

@@ -30,7 +30,7 @@ lang["Saecki/crates.nvim"] = {
 }
 lang["MeanderingProgrammer/render-markdown.nvim"] = {
 	lazy = true,
-	ft = "markdown",
+	ft = { "markdown", "codecompanion" },
 	config = require("lang.render-markdown"),
 }
 lang["iamcco/markdown-preview.nvim"] = {

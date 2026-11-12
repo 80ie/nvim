@@ -143,4 +143,20 @@ tool["mfussenegger/nvim-dap"] = {
 	},
 }
 
+----------------------------------------------------------------------
+--                              AI                                  --
+----------------------------------------------------------------------
+tool["olimorris/codecompanion.nvim"] = {
+	lazy = true,
+	cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions", "CodeCompanionCmd" },
+	config = require("tool.codecompanion"),
+	dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
+}
+-- Sign-in only (:Copilot auth); codecompanion reads the saved token. Completion stays off.
+tool["zbirenbaum/copilot.lua"] = {
+	lazy = true,
+	cmd = "Copilot",
+	config = require("tool.copilot"),
+}
+
 return tool

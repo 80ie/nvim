@@ -26,7 +26,7 @@ function M.lsp(buf)
 			:with_silent()
 			:with_buffer(buf)
 			:with_desc("lsp: Toggle outline"),
-		["n|gto"] = map_callback(function()
+		["n|<leader>ls"] = map_callback(function()
 				helpers.picker("lsp_document_symbols")
 			end)
 			:with_silent()
@@ -39,7 +39,11 @@ function M.lsp(buf)
 		["n|gs"] = map_callback(vim.lsp.buf.signature_help):with_desc("lsp: Signature help"),
 		["n|gd"] = map_callback(vim.lsp.buf.definition):with_buffer(buf):with_desc("lsp: Goto definition"),
 		["n|gr"] = map_callback(vim.lsp.buf.references):with_buffer(buf):with_desc("lsp: References"),
-		["n|K"] = map_callback(vim.lsp.buf.hover):with_buffer(buf):with_desc("lsp: Show doc"),
+		["n|K"] = map_callback(function()
+				vim.lsp.buf.hover({ border = "single" })
+			end)
+			:with_buffer(buf)
+			:with_desc("lsp: Show doc"),
 		["nv|<leader>ca"] = map_callback(vim.lsp.buf.code_action):with_buffer(buf):with_desc("lsp: Code action"),
 		["n|gh"] = map_callback(function()
 				helpers.picker("lsp_references")

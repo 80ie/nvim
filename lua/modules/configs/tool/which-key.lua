@@ -68,6 +68,7 @@ return function()
 			{ "<leader>c", group = icons.misc.LspAvailable .. " Code" },
 			{ "<leader>t", group = icons.ui.History .. " Undo" },
 			{ "<leader>u", group = icons.ui.Gear .. " UI" },
+			{ "<leader>i", group = "󰚩 AI" },
 			require("keymap.toggle").spec,
 		},
 	})

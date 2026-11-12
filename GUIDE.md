@@ -3,7 +3,7 @@
 The `integrate` branch moves the config onto the nvimdots module layout (lazy.nvim, `lua/modules/...`, `lua/keymap/...`). Master was a flat `vim-plug` setup with one file per plugin in `plugin/`.
 
 - **Leader** is `<Space>`. `<A-x>` means Alt+x.
-- Press `<Space>` and wait: which-key lists every group. `<leader>?` opens the full keymap list, `<C-p>` fuzzy-searches all keymaps, `<leader>/` opens the cheatsheet.
+- Press `<Space>` and wait: which-key lists every group. `<leader>?` opens the full keymap list, `<C-p>` or `<leader>/` fuzzy-searches all keymaps live.
 - Plugins load lazily. If a key does nothing the first time, the plugin is probably still loading from its trigger event.
 - Manage plugins with `<leader>ph` (Lazy UI), `<leader>ps` (sync), `<leader>pu` (update).
 
@@ -15,7 +15,7 @@ The `integrate` branch moves the config onto the nvimdots module layout (lazy.nv
 | nvim-autopairs | Pairs, custom `<CR>` | Replaced by **autoclose.nvim**. The master `<CR>`/`<C-n>`/`<C-p>` pum mappings are gone; blink.cmp owns them. |
 | gitsigns | `]c` `[c` `<leader>hp/hs/hr` | `]g` `[g` `<leader>gp/gs/gr/gR/gb`. Current-line blame is off by default. |
 | clangd LSP | Hand-written `vim.lsp.config`, keys `gd gr K <leader>rn <leader>ca <leader>cf <leader>cd` | Full LSP stack (section 3). Rename and format keys moved; see the table there. |
-| nvim-tree, bufferline, telescope, which-key, cheatsheet, substitute, time-machine, vimtex, render-markdown, melange | Own config files | Same plugins, same keys (see "Kept as is"). `<leader>e`, `<leader>E`, `]b`, `[b` still work. |
+| nvim-tree, bufferline, telescope, which-key, substitute, time-machine, vimtex, render-markdown, melange | Own config files | Same plugins, same keys (see "Kept as is"). `<leader>e`, `<leader>E`, `]b`, `[b` still work. |
 | `<C-h/j/k/l>` | Plain `<C-w>` moves | smart-splits (same keys, plus `<A-h/j/k/l>` to resize). |
 | `<leader>ff`, `<leader>fg`, `<leader>fb`, `<leader><space>` | Snacks pickers | Telescope "collections" (section 2). `<leader><space>` and `<leader>fn` are gone. |
 | `<leader>gg` | `Snacks.lazygit()` | lazygit in a toggleterm float. |
@@ -68,8 +68,7 @@ Servers install through **mason.nvim** (`:Mason`). The configured set is in `lua
 | `gs` | Signature help |
 | `<leader>ca` | Code action (normal and visual) |
 | `go` | Symbol outline (Trouble, docked on the left through edgy) |
-| `gto` | Document symbols in Telescope |
-| `gt` | Diagnostics list (Trouble) |
+| `<leader>ls` | Document symbols in Telescope |
 | `<leader>ld` | Diagnostics for this buffer |
 | `<leader>lw` / `<leader>lp` | Workspace / project diagnostics |
 | `<leader>lx` | Line diagnostic float |
@@ -194,7 +193,7 @@ Lookahead is on, so `daf` works with the cursor before the function.
 - **rainbow-delimiters**: colored brackets. **nvim-treesitter-context**: pins up to 3 lines of enclosing scope at the top of the window. **mini.cursorword**: underlines other uses of the word under the cursor. **nvim-highlight-colors**: paints hex, rgb, hsl, and CSS variables with their color.
 - **paint.nvim**: extra highlights, currently Lua `---@tag` annotations and Python `name:` keys.
 - **nvim-notify**: popup notifications at INFO and above, 2 s timeout. Browse history from `<leader>fm` → Notify.
-- **UI toggles** (`<leader>u`): `w` wrap, `s` spell, `l` numbers, `L` relative numbers, `i` invisible chars, `c` conceal, `d` diagnostics, `h` inlay hints, `b` dark background, `f` format on save, `v` virtual lines, `C` treesitter context, `H` color preview.
+- **UI toggles** (`<leader>u`): `w` wrap, `s` spell, `l` numbers, `L` relative numbers, `i` invisible chars, `c` conceal, `d` diagnostics, `h` inlay hints, `b` dark background, `f` format on save, `v` virtual lines, `C` treesitter context, `H` color preview, `m` reading view.
 - **Themery**: `<leader>ut` opens a theme picker with live preview. It lists every installed colorscheme: melange (default), gruvbox, mellifluous, darkearth. The choice persists across restarts.
 - **Splash**: opening `nvim` with no file shows a random picture rendered as braille dots, sized to the window. Pictures live in `splash/img`; regenerate art with `splash/generate.py`.
 
@@ -248,7 +247,7 @@ The dap-ui panels open automatically when a session starts. `K` is rebound to ev
 
 - **Rust**: rustaceanvim runs rust-analyzer (not mason's). Builds run in toggleterm. **crates.nvim** adds version info in `Cargo.toml`. In a `Cargo.toml` buffer: `<leader>ct` toggle, `<leader>cr` reload, `<leader>cv` versions popup, `<leader>cf` features, `<leader>cd` dependencies, `<leader>cu` / `<leader>ca` update current / all, `<leader>cU` / `<leader>cA` upgrade current / all, `<leader>cH` homepage, `<leader>cR` repository, `<leader>cD` docs, `<leader>cC` crates.io page. These are buffer-local, so `<leader>ca` is code action everywhere else.
 - **Go**: go.nvim supplies `:Go*` commands (`:GoTest`, `:GoImpl`, `:GoFillStruct`, and so on) with its own LSP, DAP, and keymaps turned off, so gopls and delve stay in charge. First run builds its helper binaries (`:GoInstallBinaries`).
-- **Markdown**: render-markdown shows rendered headings, tables, and code in the buffer (`<F1>` toggles). markdown-preview opens a browser preview (`<F12>`). Math is rendered by Snacks.image.
+- **Markdown**: render-markdown shows rendered headings, tables, and code in the buffer (`<F1>` toggles). `<leader>um` opens a read-only reading view: a centered 100-column column on a plain background, with no gutter or diagnostics, and raw markdown stays hidden on the cursor line; press it again to go back. markdown-preview opens a browser preview (`<F12>`). Math is rendered by Snacks.image.
 - **CSV**: csv.vim.
 - **LaTeX**: vimtex is unchanged, including the Zathura/Okular settings.
 - **Lua config work**: lazydev gives completion and type info for the Neovim API.

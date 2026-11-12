@@ -16,9 +16,8 @@ local mappings = {
 	["x|<leader>="] = map_cmd("="):with_noremap():with_desc("edit: Reindent selection"),
 
 	-- help
-	["n|<leader>/"] = map_cr("Cheatsheet"):with_silent():with_desc("help: Cheatsheet"),
+	["n|<leader>/"] = map_cmd("<C-p>"):with_silent():with_desc("help: Search all keymaps"),
 	["n|<leader>?"] = map_cr("WhichKey"):with_silent():with_desc("help: All keymaps"),
-	["n|<leader>fC"] = map_cr("CheatsheetEdit"):with_silent():with_desc("help: Edit cheatsheet"),
 
 	-- files / buffers
 	["n|<leader>e"] = map_cr("NvimTreeToggle"):with_silent():with_desc("filetree: Toggle"),
@@ -48,6 +47,12 @@ local mappings = {
 
 	-- theme
 	["n|<leader>ut"] = map_cr("Themery"):with_silent():with_desc("ui: Pick theme"),
+
+	-- ai
+	["n|<leader>ii"] = map_cr("CodeCompanionChat Toggle"):with_silent():with_desc("ai: Toggle chat"),
+	["nx|<leader>ia"] = map_cr("CodeCompanionActions"):with_silent():with_desc("ai: Actions"),
+	["nx|<leader>ip"] = map_cmd(":CodeCompanion<CR>"):with_noremap():with_silent():with_desc("ai: Inline prompt"),
+	["x|<leader>is"] = map_cr("CodeCompanionChat Add"):with_silent():with_desc("ai: Send selection to chat"),
 }
 
 bind.nvim_load_mapping(mappings)

@@ -83,10 +83,6 @@ local mappings = {
 		["n|<leader>lk"] = map_cr("DocsViewToggle"):with_noremap():with_silent():with_desc("lsp: Toggle docs pane"),
 
 		-- Plugin: trouble
-		["n|gt"] = map_cr("Trouble diagnostics toggle")
-			:with_noremap()
-			:with_silent()
-			:with_desc("lsp: Toggle trouble list"),
 		["n|<leader>lw"] = map_cr("Trouble diagnostics toggle")
 			:with_noremap()
 			:with_silent()

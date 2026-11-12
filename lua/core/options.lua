@@ -50,7 +50,6 @@ local function load_options()
 		shada = "!,'500,<50,@100,s10,h",
 		shiftround = true,
 		shortmess = "aoOTIcF",
-		showbreak = "↳  ",
 		showcmd = false,
 		showmode = false,
 		showtabline = 2,

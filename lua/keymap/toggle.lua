@@ -27,6 +27,53 @@ local function plugin_state(mod, get, set)
 	end
 end
 
+-- Read-only 100-column column centered on an opaque Normal-bg backdrop (Snacks.zen).
+-- Hides gutter and diagnostics, and never reveals raw markdown on the cursor line.
+local function reading_buf(buf, on, saved)
+	vim.bo[buf].modifiable = not on and saved.modifiable
+	vim.diagnostic.enable(not on and saved.diag, { bufnr = buf })
+	local ok, rm = pcall(require, "render-markdown.state")
+	local cfg = ok and rm.get_config(buf)
+	if cfg then
+		cfg.anti_conceal.enabled = not on
+		-- conceal on the cursor line too, so scrolling never shows raw markdown
+		cfg.win_options.concealcursor.rendered = on and "nc" or ""
+		require("render-markdown.api").render({ buf = buf })
+	end
+end
+
+local function reading_view(on)
+	if not on then
+		return Snacks.zen.win:close()
+	end
+	local buf = vim.api.nvim_get_current_buf()
+	local saved = { modifiable = vim.bo[buf].modifiable, diag = vim.diagnostic.is_enabled({ bufnr = buf }) }
+	Snacks.zen({
+		toggles = {},
+		win = {
+			width = 100,
+			backdrop = { transparent = false, bg = Snacks.util.color("Normal", "bg"), blend = 0 },
+			wo = {
+				number = false,
+				relativenumber = false,
+				signcolumn = "no",
+				foldcolumn = "0",
+				statuscolumn = "",
+				cursorline = false,
+				wrap = true,
+				linebreak = true,
+				showbreak = "NONE",
+			},
+		},
+		on_open = function()
+			reading_buf(buf, true, saved)
+		end,
+		on_close = function()
+			reading_buf(buf, false, saved)
+		end,
+	})
+end
+
 local function t(key, name, get, set)
 	return { key = key, name = name, get = get, set = set }
 end
@@ -40,9 +87,9 @@ local toggles = {
 	t("i", "invisible chars", wo("list")),
 	t("c", "conceal", wo("conceallevel", 2, 0)),
 	t("d", "diagnostics", function()
-		return vim.diagnostic.is_enabled()
+		return vim.diagnostic.is_enabled({ bufnr = 0 })
 	end, function(v)
-		vim.diagnostic.enable(v)
+		vim.diagnostic.enable(v, { bufnr = 0 })
 	end),
 	t("h", "inlay hints", function()
 		return vim.lsp.inlay_hint.is_enabled({ bufnr = 0 })
@@ -68,6 +115,9 @@ local toggles = {
 	t("H", "color preview", plugin_state("nvim-highlight-colors", function(m)
 		return m.is_active()
 	end, "toggle")),
+	t("m", "reading view", function()
+		return Snacks.zen.win ~= nil and Snacks.zen.win:valid()
+	end, reading_view),
 }
 
 local M = { spec = {} }

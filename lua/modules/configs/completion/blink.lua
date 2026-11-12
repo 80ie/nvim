@@ -55,7 +55,9 @@ local opts = {
 
 	sources = {
 		default = sources_default,
+		per_filetype = { codecompanion = { "codecompanion" } },
 		providers = {
+			codecompanion = { name = "CodeCompanion", module = "codecompanion.providers.completion.blink" },
 			lsp = { max_items = 350 },
 			lazydev = {
 				module = "lazydev.integrations.blink",
