@@ -82,7 +82,12 @@ local mappings = {
 		-- Plugin: nvim-docs-view
 		["n|<leader>lk"] = map_cr("DocsViewToggle"):with_noremap():with_silent():with_desc("lsp: Toggle docs pane"),
 
-		-- Plugin: trouble
+		-- Plugin: trouble (outline docked below the current window, not the editor edge)
+		["n|<leader>lo"] = map_cr("Trouble symbols toggle win.position=bottom win.relative=win win.size=12")
+			:with_noremap()
+			:with_silent()
+			:with_desc("lsp: Toggle outline below window"),
+
 		["n|<leader>lw"] = map_cr("Trouble diagnostics toggle")
 			:with_noremap()
 			:with_silent()

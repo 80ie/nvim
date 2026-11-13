@@ -105,10 +105,10 @@ settings["lsp_inlayhints"] = false
 settings["lsp_deps"] = {
 	"bashls",
 	"clangd",
-	"gopls",
 	"html",
 	"jsonls",
 	"lua_ls",
+	"marksman",
 	"ruff",
 	"pyrefly",
 }
@@ -118,8 +118,6 @@ settings["lsp_deps"] = {
 ---@type string[]
 settings["null_ls_deps"] = {
 	"clang_format",
-	"gofumpt",
-	"goimports",
 	"prettier",
 	"shfmt",
 	"stylua",
@@ -131,7 +129,6 @@ settings["null_ls_deps"] = {
 ---@type string[]
 settings["dap_deps"] = {
 	"codelldb", -- C-Family
-	"delve", -- Go
 	"python", -- Python (debugpy)
 }
 

@@ -32,7 +32,7 @@ misc["lervag/vimtex"] = {
 -- Only image (math in markdown/latex) and the dashboard are used
 misc["folke/snacks.nvim"] = {
 	lazy = false,
-	priority = 900,
+	priority = 1000,
 	opts = {
 		image = { enabled = true },
 		dashboard = {
