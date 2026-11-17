@@ -22,10 +22,6 @@ function M.lsp(buf)
 		-- LSP-related keymaps, ONLY effective in buffers with LSP(s) attached
 		["n|<leader>li"] = map_cr("LspInfo"):with_silent():with_buffer(buf):with_desc("lsp: Info"),
 		["n|<leader>lr"] = map_cr("LspRestart"):with_silent():with_buffer(buf):with_nowait():with_desc("lsp: Restart"),
-		["n|go"] = map_cr("Trouble symbols toggle win.position=right")
-			:with_silent()
-			:with_buffer(buf)
-			:with_desc("lsp: Toggle outline"),
 		["n|<leader>ls"] = map_callback(function()
 				helpers.picker("lsp_document_symbols")
 			end)

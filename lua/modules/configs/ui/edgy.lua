@@ -1,15 +1,4 @@
 return function()
-	local function trouble_filter(position)
-		return function(_, win)
-			local tw = vim.w[win].trouble
-			return tw
-				and tw.position == position
-				and tw.type == "split"
-				and tw.relative == "editor"
-				and not vim.w[win].trouble_preview
-		end
-	end
-
 	require("modules.utils").load_plugin("edgy", {
 		animate = { enabled = false },
 		close_when_all_hidden = true,
@@ -41,14 +30,11 @@ return function()
 				open = "NvimTreeOpen",
 			},
 			{
-				ft = "trouble",
+				ft = "aerial",
 				pinned = true,
 				collapsed = false,
 				size = { height = 0.4, width = 0.15 },
-				open = function()
-					return vim.b.buftype == "" and "Trouble symbols toggle win.position=right"
-				end,
-				filter = trouble_filter("right"),
+				open = "AerialOpen! left",
 			},
 		},
 		right = {

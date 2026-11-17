@@ -61,6 +61,11 @@ tool["folke/trouble.nvim"] = {
 	cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
 	config = require("tool.trouble"),
 }
+tool["stevearc/aerial.nvim"] = {
+	lazy = true,
+	cmd = { "AerialToggle", "AerialOpen", "AerialClose", "AerialNavToggle" },
+	config = require("tool.aerial"),
+}
 tool["amrbashir/nvim-docs-view"] = {
 	lazy = true,
 	cmd = { "DocsViewToggle", "DocsViewUpdate" },

@@ -82,6 +82,9 @@ local mappings = {
 		-- Plugin: nvim-docs-view
 		["n|<leader>lk"] = map_cr("DocsViewToggle"):with_noremap():with_silent():with_desc("lsp: Toggle docs pane"),
 
+		-- Plugin: aerial (outline, docked under the tree by edgy)
+		["n|go"] = map_cr("AerialToggle! left"):with_noremap():with_silent():with_desc("tool: Toggle outline"),
+
 		-- Plugin: trouble
 		["n|<leader>lw"] = map_cr("Trouble diagnostics toggle")
 			:with_noremap()
