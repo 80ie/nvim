@@ -71,6 +71,13 @@ editor["brenoprata10/nvim-highlight-colors"] = {
 	event = { "CursorHold", "CursorHoldI" },
 	config = require("editor.highlight-colors"),
 }
+editor["uga-rosa/ccc.nvim"] = {
+	lazy = true,
+	cmd = { "CccPick", "CccConvert", "CccHighlighterToggle" },
+	config = function()
+		require("ccc").setup({ highlighter = { auto_enable = false } })
+	end,
+}
 editor["romainl/vim-cool"] = {
 	lazy = true,
 	event = { "CursorMoved", "InsertEnter" },
