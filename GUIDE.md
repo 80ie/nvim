@@ -219,7 +219,7 @@ Inside diffview, `g?` lists its keys. Use it for three-way merge conflicts too.
 
 - **toggleterm**: `<C-\>` horizontal terminal, `<A-\>` or `<F5>` vertical, `<A-d>` floating. The same key hides it again, including from terminal mode. `<Esc><Esc>` leaves terminal mode. `<C-w>h/j/k/l` move out of a terminal window. The horizontal terminal docks at the bottom through edgy.
 - **sniprun**: visual select, then `<leader>r` runs the snippet. Output shows as virtual text and in the command line.
-- **C files** (`after/ftplugin/c.lua`): `<leader>m` runs `make` and opens the quickfix list. Without a Makefile it compiles the current file with `gcc -g -O0 -Wall -Wextra`. `<leader>M` runs the built binary. In C and C++ buffers, `<leader>h` also switches between header and source (clangd).
+- **C files** (`after/ftplugin/c.lua`): `<leader>m` runs `make` and opens the quickfix list. Without a Makefile, a CMake project builds with `cmake --build --preset dev` (or `build/` when there are no presets). Otherwise it compiles the current file with `gcc -g -O0 -Wall -Wextra`. `<leader>M` runs the built binary. In C and C++ buffers, `<leader>h` also switches between header and source (clangd).
 - **nvim-bqf** improves the quickfix window with a preview pane. With its default keys, `<Tab>` marks entries and `zf` opens fzf inside the list.
 
 ## 8. Debugging (nvim-dap + dap-ui)

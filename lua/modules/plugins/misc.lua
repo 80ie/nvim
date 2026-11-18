@@ -33,6 +33,17 @@ misc["lervag/vimtex"] = {
 misc["folke/snacks.nvim"] = {
 	lazy = false,
 	priority = 1000,
+	init = function()
+		vim.api.nvim_create_autocmd("ModeChanged", {
+			callback = function(ev)
+				Snacks.image.config.math.enabled = vim.fn.mode():sub(1, 1) == "n"
+				pcall(vim.api.nvim_exec_autocmds, "BufWritePost", {
+					group = "snacks.image.inline." .. ev.buf,
+					modeline = false,
+				})
+			end,
+		})
+	end,
 	opts = {
 		image = { enabled = true },
 		dashboard = {

@@ -21,6 +21,9 @@ local sources_default = { "lazydev", "lsp", "snippets", "path", "buffer", "ripgr
 ---@module 'blink.cmp'
 ---@type blink.cmp.Config
 local opts = {
+	enabled = function()
+		return vim.bo.filetype ~= "markdown"
+	end,
 	snippets = { preset = "luasnip" },
 	cmdline = {
 		enabled = true,
